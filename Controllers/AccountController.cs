@@ -43,6 +43,8 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult guardarRegistro(string username, string password, string nombre, string apellido, IFormFile foto)
     {
+        string rutaFoto = null;
+
         if(foto != null && foto.Length > 0)
         {
             string nombreFoto = foto.FileName;
@@ -56,10 +58,12 @@ public class AccountController : Controller
             {
                 foto.CopyTo(stream);
             }
+
+            rutaFoto = "/Imagenes/" + nombreFoto;
         }
 
 
-        BD.SignIn(username,password,nombre,apellido,foto.ToString(),(DateTime.Today));
+        BD.SignIn(username,password,nombre,apellido,rutaFoto,(DateTime.Today));
         Usuario usuario = BD.GetUsuario(username,password);
         HttpContext.Session.SetString("ID", usuario.ID.ToString());
         return RedirectToAction("verTareas", "Home");
