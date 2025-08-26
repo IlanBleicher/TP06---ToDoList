@@ -12,7 +12,7 @@
 
     <h1>Modificar Tarea</h1>
 
-    <form action='@Url.Action("modificarTarea", "Home")' method="POST" enctype="multipart/form-data" class="task-form">
+    <form action='@Url.Action("modificarTarea", "Home", new {idTarea=ViewBag.Tarea.ID})' method="POST" enctype="multipart/form-data" class="task-form">
 
         <div class="form-group">
             <input type="text" name="titulo" placeholder="Título" required/>

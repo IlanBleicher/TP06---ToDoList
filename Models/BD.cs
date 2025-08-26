@@ -24,13 +24,13 @@ static public class BD
     }
 
 // Registrarse
-    public static void SignIn(string username, string password, string nombre, string apellido, IFormFile foto, DateTime fechaUltimoLogin)
+    public static void SignIn(string username, string password, string nombre, string apellido, string foto, DateTime fechaUltimoLogin)
     {
         if(GetUsuario(username, password) == null)
         {
             using(SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO Usuario (username, password, nombre, apellido, foto, ultimoLogin) VALUES (@pUsername, @pPassword, @pNombre, @pApellido, @pFoto, @pFechaUltimoLogin)";
+                string query = "INSERT INTO Usuarios (username, password, nombre, apellido, foto, ultimoLogin) VALUES (@pUsername, @pPassword, @pNombre, @pApellido, @pFoto, @pFechaUltimoLogin)";
                 connection.Execute(query, new {pUsername = username, pPassword = password, pNombre = nombre, pApellido = apellido, pFoto = foto, pFechaUltimoLogin = fechaUltimoLogin});
             }
         }
@@ -47,7 +47,7 @@ static public class BD
 
         return usuarioBuscado;
     }
-
+    
     public static List<Tarea> getListaTareas(int idUsuario)
     {
         List<Tarea> listaDeTareas = new List<Tarea>();
@@ -69,12 +69,12 @@ static public class BD
         }
     }
 
-    public static void editarTarea(string titulo, string descripcion, DateTime fecha, bool finalizada, int IDUsuario)
+    public static void editarTarea(string titulo, string descripcion, DateTime fecha, bool finalizada, int IDUsuario, int idTarea)
     {
         using(SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "UPDATE Tareas SET titulo = @pTitulo, descripcion = @pDescripcion, fecha = @pFecha, finalizada = @pFinalizada, IDUsuario = @pIDUsuario";
-            connection.Execute(query, new {pTitulo = titulo, pDescripcion = descripcion, pFecha = fecha, pFinalizada = finalizada, pIDUsuario = IDUsuario});
+            string query = "UPDATE Tareas SET titulo = @pTitulo, descripcion = @pDescripcion, fecha = @pFecha, finalizada = @pFinalizada, IDUsuario = @pIDUsuario WHERE ID = @pIDTarea";
+            connection.Execute(query, new {pTitulo = titulo, pDescripcion = descripcion, pFecha = fecha, pFinalizada = finalizada, pIDUsuario = IDUsuario, pIDTarea = idTarea});
         }
     }
 
@@ -82,7 +82,7 @@ static public class BD
     {
         using(SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "DELETE FROM Tarea WHERE ID = @pidTarea";
+            string query = "DELETE FROM Tareas WHERE ID = @pidTarea";
             connection.Execute(query, new {pidTarea = idTarea});
         }
     }

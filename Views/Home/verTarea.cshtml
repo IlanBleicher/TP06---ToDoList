@@ -19,7 +19,7 @@
 
         <div class="task-actions">
             <a href='@Url.Action("eliminarTarea", "Home", new {idTarea=ViewBag.Tarea.ID})' class="btn btn-danger">Eliminar Tarea</a>
-            <a href='@Url.Action("modificarTarea", "Home")' class="btn btn-primary">Modificar Tarea</a>
+            <a href='@Url.Action("modificarTarea", "Home", new {idTarea=ViewBag.Tarea.ID})' class="btn btn-primary">Modificar Tarea</a>
         </div>
     </div>
 </main>

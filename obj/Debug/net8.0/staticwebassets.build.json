@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "I/kuD/VeW3uEtm42po4QjoWxQAd48HVrWI/PbiQLlHI=",
+  "Hash": "ULCN851ff6YTvLtruVzzQC7QCPbe7xN7mfKSSJHdtQU=",
   "Source": "TP06-ToDoList",
   "BasePath": "_content/TP06-ToDoList",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Imagenes\\logOutImagen.png"
+    },
+    {
+      "Identity": "C:\\Users\\49255481\\TP06---ToDoList\\wwwroot\\Imagenes\\OIP.webp",
+      "SourceId": "TP06-ToDoList",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49255481\\TP06---ToDoList\\wwwroot\\",
+      "BasePath": "_content/TP06-ToDoList",
+      "RelativePath": "Imagenes/OIP.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Imagenes\\OIP.webp"
     },
     {
       "Identity": "C:\\Users\\49255481\\TP06---ToDoList\\wwwroot\\js\\site.js",

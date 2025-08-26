@@ -43,13 +43,14 @@ public class HomeController : Controller
         return RedirectToAction("verTareas");
     }
 
-    public IActionResult modificarTarea()
+    public IActionResult modificarTarea(int IDTarea)
     {
+        ViewBag.tarea = BD.verTarea(IDTarea);
         return View();
     }
     
     [HttpPost]
-    public IActionResult modificarTarea(string titulo, string descripcion, DateTime fecha, string opcionFinalizar)
+    public IActionResult modificarTarea(string titulo, string descripcion, DateTime fecha, string opcionFinalizar, int idTarea)
     {
         int idUsuario = int.Parse(HttpContext.Session.GetString("ID"));
 
@@ -63,7 +64,7 @@ public class HomeController : Controller
             finalizarBool = false;
         }
 
-        BD.editarTarea(titulo, descripcion, fecha, finalizarBool,idUsuario);
+        BD.editarTarea(titulo, descripcion, fecha, finalizarBool,idUsuario, idTarea);
         return RedirectToAction("verTareas");
     }
 

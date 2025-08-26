@@ -59,10 +59,10 @@ public class AccountController : Controller
         }
 
 
-        BD.SignIn(username,password,nombre,apellido,foto,(DateTime.Today));
+        BD.SignIn(username,password,nombre,apellido,foto.ToString(),(DateTime.Today));
         Usuario usuario = BD.GetUsuario(username,password);
         HttpContext.Session.SetString("ID", usuario.ID.ToString());
-        return View("verTareas");
+        return RedirectToAction("verTareas", "Home");
     }
 
     public IActionResult logOut()
